@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="row">
-            <div class="col-12 fs-1 text-center text-uppercase text-success">
+            <div class="col-12 fs-1 text-center text-uppercase">
                 <p>weather</p>
             </div>
         </div>
@@ -12,23 +12,37 @@
             <div class="col-md-8 col-11 border border-4 border-dark h-75 p-0 d-flex">
                 <div class="border border-5 border-danger col-6 h-100 p-3">
                     <div class="text-uppercase fs-4">
-                        <span class="fw-bold">date :  </span><span>{{date|date:'dd-MM-YYYY'}}</span><br>
-                        <span class="fw-bold">day : </span><span>{{date|date:'EEEE'}}</span><br>
-                        <span class="fw-bold">time : </span><span>{{date|date:'hh:mm:ss a'}}</span>
+                        <span class="fw-bold text-primary">date : </span><span>{{date|date:'dd-MM-YYYY'}}</span><br>
+                        <span class="fw-bold text-primary">day : </span><span>{{date|date:'EEEE'}}</span><br>
+                        <span class="fw-bold text-primary">time : </span><span>{{date|date:'hh:mm:ss a'}}</span>
                     </div>
 
                     <div class="mt-5 text-capitalize">
+                      <form [formGroup]="myform" (ngSubmit)="getCityTemp()" >
                         <label for="city" class="form-label">your city name</label>
                         <input type="text" class="form-control w-75 rounded-0 shadow-none border border-2 "
-                            placeholder="Enter your city name">
+                            placeholder="Enter your city name" formControlName="cityname" name="cityname">
 
-                        <input type="button" class="btn btn-primary w-25 mt-3" value="SEARCH">
+                        <input type="submit" class="btn btn-primary w-25 mt-3" value="SEARCH">
+                      </form>
                     </div>
                 </div>
 
-                <div class="border border-5 border-danger col-6 h-100 image">
-                    <img src="WatherAppByAngular\src\assets\bg.avif" alt="this is the bg image for weather app">
-
+                <div class="border border-5 border-danger col-6 h-100">
+                    <div class="border border-4 border-dark p-3">
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Tempreture : </span><span>{{cityTempData.temp}}</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Feel : </span><span>{{cityTempData.feels_like}}</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Humidity : </span><span>{{cityTempData.humidity}}</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Wind Speed : </span><span>{{cityTempData.wind_speed}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
