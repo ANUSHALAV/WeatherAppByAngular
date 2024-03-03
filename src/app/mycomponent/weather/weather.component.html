@@ -9,8 +9,8 @@
 
     <div class="container">
         <div class="row justify-content-center align-items-center innerbox">
-            <div class="col-md-8 col-11 border border-4 border-dark h-75 p-0 d-flex">
-                <div class="border border-5 border-danger col-6 h-100 p-3">
+            <div class="col-md-8 col-11 h-75 p-4 d-flex shadow-lg">
+                <div class="col-6 h-100 p-3">
                     <div class="text-uppercase fs-4">
                         <span class="fw-bold text-primary">date : </span><span>{{date|date:'dd-MM-YYYY'}}</span><br>
                         <span class="fw-bold text-primary">day : </span><span>{{date|date:'EEEE'}}</span><br>
@@ -18,29 +18,44 @@
                     </div>
 
                     <div class="mt-5 text-capitalize">
-                      <form [formGroup]="myform" (ngSubmit)="getCityTemp()" >
-                        <label for="city" class="form-label">your city name</label>
-                        <input type="text" class="form-control w-75 rounded-0 shadow-none border border-2 "
-                            placeholder="Enter your city name" formControlName="cityname" name="cityname">
+                        <form [formGroup]="myform" (ngSubmit)="getCityTemp()">
+                            <label for="city" class="form-label">your city name</label>
+                            <input type="text" class="form-control w-75 rounded-0 shadow-none border border-2 text-capitalize"
+                                placeholder="Enter your city name" formControlName="cityname" name="cityname" autocomplete="off">
 
-                        <input type="submit" class="btn btn-primary w-25 mt-3" value="SEARCH">
-                      </form>
+                            <input type="submit" class="btn btn-primary w-25 mt-3 rounded-0" value="SEARCH">
+                        </form>
                     </div>
                 </div>
 
-                <div class="border border-5 border-danger col-6 h-100">
-                    <div class="border border-4 border-dark p-3">
-                        <div>
-                            <span class="fs-5 fw-bold text-primary">Tempreture : </span><span>{{cityTempData.temp}}</span>
+                <div class="col-6 h-100">
+                    <div class="">
+                        <div class="text-center mb-4 text-uppercase">
+                            <p class="fs-2 fw-bold text-success">rishikesh</p>
                         </div>
                         <div>
-                            <span class="fs-5 fw-bold text-primary">Feel : </span><span>{{cityTempData.feels_like}}</span>
+                            <span class="fs-5 fw-bold text-primary">Tempreture :
+                            </span><span>{{cityTempData.temp}}&#8451;</span>
                         </div>
                         <div>
-                            <span class="fs-5 fw-bold text-primary">Humidity : </span><span>{{cityTempData.humidity}}</span>
+                            <span class="fs-5 fw-bold text-primary">Feel :
+                            </span><span>{{cityTempData.feels_like}}&#8451;</span>
                         </div>
                         <div>
-                            <span class="fs-5 fw-bold text-primary">Wind Speed : </span><span>{{cityTempData.wind_speed}}</span>
+                            <span class="fs-5 fw-bold text-primary">Humidity :
+                            </span><span>{{cityTempData.humidity}}%</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Wind Speed :
+                            </span><span>{{cityTempData.wind_speed}}Km/h</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Sunrise :
+                            </span><span>{{cityTempData.sunrise|date:'hh:mm:ss a'}}</span>
+                        </div>
+                        <div>
+                            <span class="fs-5 fw-bold text-primary">Sunset :
+                            </span><span>{{cityTempData.sunset|date:'hh:mm:ss a'}}</span>
                         </div>
                     </div>
                 </div>

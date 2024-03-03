@@ -13,6 +13,10 @@ export class WeatherComponent implements OnInit {
   date = new Date();
   cityTempData: any;
   constructor(private httpclientmodule: HttpClient) {
+    this.httpclientmodule.get("https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=dehli", this.options).subscribe((res: any) => {
+      this.cityTempData = res;
+      console.log(this.cityTempData);
+    })
   }
 
   options: object = {
@@ -31,7 +35,7 @@ export class WeatherComponent implements OnInit {
 
 
   myform: FormGroup = new FormGroup({
-    cityname: new FormControl('', [Validators.required])
+    cityname: new FormControl('', [Validators.required,Validators.maxLength(10)])
   });
 
 
